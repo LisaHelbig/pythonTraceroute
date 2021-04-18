@@ -77,7 +77,7 @@ def get_route(hostname):
 
     for ttl in range(1,MAX_HOPS):
         for tries in range(TRIES):
-            destAddr = gethostbyname(hostname)
+            destAddr = gethostbyname(str(hostname))
 
 
             #Fill in start
