@@ -128,13 +128,13 @@ def get_route(hostname):
                 #Fill in end
                 try: #try to fetch the hostname
                     #Fill in start
-                    hostname = gethostbyaddr(destAddr)
+                    hostName = gethostbyaddr(destAddr)
                     print("got host")
                     #Fill in end
                 except herror:   #if the host does not provide a hostname
                     #Fill in start
                     print("did not get host")
-                    hostname = "hostname not returnable"
+                    hostName = "hostname not returnable"
                     #Fill in end
 
 
@@ -146,7 +146,7 @@ def get_route(hostname):
                     #Fill in start
                     #You should add your responses to your lists here
                     #hop = hop + 1
-                    tracelist1.append([ttl, (timeReceived - timeSent), destAddr, hostname])
+                    tracelist1.append([ttl, (timeReceived - timeSent), destAddr, hostName])
                     print("type 11 done")
                     #Fill in end
                 elif types == 3:
@@ -156,7 +156,7 @@ def get_route(hostname):
                     #Fill in start
                     #You should add your responses to your lists here
                     #hop = hop + 1
-                    tracelist1.append([ttl, (timeReceived - timeSent), destAddr, hostname])
+                    tracelist1.append([ttl, (timeReceived - timeSent), destAddr, hostName])
                     print("Type 3 done")
                     #Fill in end
                 elif types == 0:
@@ -166,7 +166,7 @@ def get_route(hostname):
                     #Fill in start
                     #You should add your responses to your lists here and return your list if your destination IP is met
                     #hop = hop + 1
-                    tracelist1.append([ttl, (timeReceived - timeSent), destAddr, hostname])
+                    tracelist1.append([ttl, (timeReceived - timeSent), destAddr, hostName])
                     tracelist2.append(tracelist1)
                     print("return")
                     return tracelist2
