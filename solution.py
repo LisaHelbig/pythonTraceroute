@@ -115,8 +115,9 @@ def get_route(hostname):
             except timeout:
                 continue
 
-            print("continuing")
+            
             else:
+                print("continuing")                
                 #Fill in start
                 #Fetch the icmp type from the IP packet
                 icmp_header = recvPacket[20:28]
