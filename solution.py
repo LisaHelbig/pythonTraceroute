@@ -99,20 +99,20 @@ def get_route(hostname):
                 startedSelect = time.time()
                 whatReady = select.select([mySocket], [], [], timeLeft)
                 howLongInSelect = (time.time() - startedSelect)
-                #if whatReady[0] == []: # Timeout
-                    #tracelist1.append("* * * Request timed out.")
+                if whatReady[0] == []: # Timeout
+                    tracelist1.append("* * * Request timed out.")
                     #Fill in start
                     #You should add the list above to your all traces list
-                    #tracelist2.append(tracelist1)
+                    tracelist2.append(tracelist1)
                     #Fill in end
                 recvPacket, addr = mySocket.recvfrom(1024)
                 timeReceived = time.time()
                 timeLeft = timeLeft - howLongInSelect
-                #if timeLeft <= 0:
-                    #tracelist1.append("* * * Request timed out.")
+                if timeLeft <= 0:
+                    tracelist1.append("* * * Request timed out.")
                     #Fill in start
                     #You should add the list above to your all traces list
-                    #tracelist2.append(tracelist1)
+                    tracelist2.append(tracelist1)
                     #Fill in end
             except timeout:
                 print("timeout continue")
@@ -123,7 +123,7 @@ def get_route(hostname):
                 print("continuing")                
                 #Fill in start
                 #Fetch the icmp type from the IP packet
-                icmp_header = recvPacket[20:28 + bytes]
+                icmp_header = recvPacket[20:28]
                 types, code, checksum, p_id, sequence = struct.unpack('bbHHh', icmp_header)
                 tracelist1 = []
                 #Fill in end
