@@ -127,14 +127,17 @@ def get_route(hostname):
                 try: #try to fetch the hostname
                     #Fill in start
                     hostname = gethostbyaddr(destAddr)
+                    print("got host")
                     #Fill in end
                 except herror:   #if the host does not provide a hostname
                     #Fill in start
+                    print("did not get host")
                     hostname = "hostname not returnable"
                     #Fill in end
 
 
                 if types == 11:
+                    print("type 11")
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 +
                     bytes])[0]
@@ -142,16 +145,20 @@ def get_route(hostname):
                     #You should add your responses to your lists here
                     hop = hop + 1
                     tracelist1.append([hop, (timeReceived - timeSent), destAddr, hostname])
+                    print("type 11 done")
                     #Fill in end
                 elif types == 3:
+                    print("Type 3")
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here
                     hop = hop + 1
                     tracelist1.append([hop, (timeReceived - timeSent), destAddr, hostname])
+                    print("Type 3 done")
                     #Fill in end
                 elif types == 0:
+                    print("type 0")
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
@@ -159,11 +166,13 @@ def get_route(hostname):
                     hop = hop + 1
                     tracelist1.append([hop, (timeReceived - timeSent), destAddr, hostname])
                     tracelist2.append(tracelist1)
+                    print("return")
                     return tracelist2
                     #Fill in end
                 else:
                     #Fill in start
                     #If there is an exception/error to your if statements, you should append that to your list here
+                    print(types);
                     tracelist1.append("ERROR")
                     #Fill in end
                 break
