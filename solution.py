@@ -72,7 +72,7 @@ def get_route(hostname):
     timeLeft = TIMEOUT
     tracelist1 = [] #This is your list to use when iterating through each trace 
     tracelist2 = [] #This is your list to contain all traces
-
+    bytes = 0
 
     for ttl in range(1,MAX_HOPS):
         print(ttl)
@@ -123,7 +123,6 @@ def get_route(hostname):
                 print("continuing")                
                 #Fill in start
                 #Fetch the icmp type from the IP packet
-                bytes = 0
                 icmp_header = recvPacket[20:28 + bytes]
                 types, code, checksum, p_id, sequence = struct.unpack('bbHHh', icmp_header)
                 tracelist1 = []
