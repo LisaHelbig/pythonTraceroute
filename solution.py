@@ -1,4 +1,4 @@
-﻿from socket import *
+from socket import *
 import os
 import sys
 import struct
@@ -24,7 +24,7 @@ def checksum(string):
 
 
     while count < countTo:
-        thisVal = (string[count + 1]) * 256 + (string[count])
+        thisVal = ord((string[count + 1])) * 256 + ord((string[count]))
         csum += thisVal
         csum &= 0xffffffff
         count += 2
@@ -82,7 +82,8 @@ def get_route(hostname):
 
             #Fill in start
             # Make a raw socket named mySocket
-            mySocket = socket(AF_INET, SOCK_RAW, getprotobyname("icmp"))
+            icmp = getprotobyname("icmp")
+            mySocket = socket(AF_INET, SOCK_RAW, icmp)
             #Fill in end
 
 
