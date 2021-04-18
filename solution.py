@@ -129,13 +129,13 @@ def get_route(hostname):
                 #Fill in end
                 try: #try to fetch the hostname
                     #Fill in start
-                    hostName = gethostbyaddr(destAddr)
+                    hostname = gethostbyaddr(destAddr)
                     print("got host")
                     #Fill in end
                 except herror:   #if the host does not provide a hostname
                     #Fill in start
                     print("did not get host")
-                    hostName = "hostname not returnable"
+                    hostname = "hostname not returnable"
                     #Fill in end
 
 
