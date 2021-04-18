@@ -52,12 +52,12 @@ def build_packet():
 
     # Make the header in a similar way to the ping exercise.
     # Append checksum to the header.
-    ID = getpid() & 0xFFFF
+    ID = os.getpid() & 0xFFFF
     myChecksum = 0
     header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, myChecksum, ID, 1)
     data = struct.pack("d", time.time())
     myChecksum = checksum(header + data)
-    myChecksum = htons(myChecksum)
+    #myChecksum = htons(myChecksum)
 
     header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, myChecksum, ID, 1)
     packet = header + data
