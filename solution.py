@@ -78,18 +78,18 @@ def get_route(hostname):
         for tries in range(TRIES):
             destAddr = gethostbyname(str(hostname))
 
-
-            #Fill in start
-            # Make a raw socket named mySocket
-            icmp = getprotobyname("icmp")
-            mySocket = socket(AF_INET, SOCK_RAW, icmp)
-            #Fill in end
-
-
-            mySocket.setsockopt(IPPROTO_IP, IP_TTL, struct.pack('I', ttl))
-            mySocket.settimeout(TIMEOUT)
-            print("Made Socket")
             try:
+                #Fill in start
+                # Make a raw socket named mySocket
+                icmp = getprotobyname("icmp")
+                mySocket = socket(AF_INET, SOCK_RAW, icmp)
+                #Fill in end
+
+
+                mySocket.setsockopt(IPPROTO_IP, IP_TTL, struct.pack('I', ttl))
+                mySocket.settimeout(TIMEOUT)
+                print("Made Socket")
+            
                 d = build_packet()
                 mySocket.sendto(d, (hostname, 0))
                 t= time.time()
