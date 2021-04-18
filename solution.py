@@ -57,7 +57,7 @@ def build_packet():
     header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, myChecksum, ID, 1)
     data = struct.pack("d", time.time())
     myChecksum = checksum(header + data)
-    #myChecksum = htons(myChecksum)
+    myChecksum = htons(myChecksum)
 
     header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, myChecksum, ID, 1)
     packet = header + data
@@ -89,6 +89,7 @@ def get_route(hostname):
 
             mySocket.setsockopt(IPPROTO_IP, IP_TTL, struct.pack('I', ttl))
             mySocket.settimeout(TIMEOUT)
+            print("Made Socket")
             try:
                 d = build_packet()
                 mySocket.sendto(d, (hostname, 0))
@@ -114,7 +115,7 @@ def get_route(hostname):
             except timeout:
                 continue
 
-
+            print("continuing")
             else:
                 #Fill in start
                 #Fetch the icmp type from the IP packet
