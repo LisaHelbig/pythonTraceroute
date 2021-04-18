@@ -112,6 +112,7 @@ def get_route(hostname):
                     #tracelist2.append(tracelist1)
                     #Fill in end
             except timeout:
+                print("timeout continue")
                 continue
 
             
@@ -176,4 +177,5 @@ def get_route(hostname):
                     #Fill in end
                 break
             finally:
+                print("close socket")
                 mySocket.close()
