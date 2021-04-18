@@ -92,7 +92,7 @@ def get_route(hostname):
             
                 d = build_packet()
                 mySocket.sendto(d, (hostname, 0))
-                t= time.time()
+                t = time.time()
                 startedSelect = time.time()
                 whatReady = select.select([mySocket], [], [], timeLeft)
                 howLongInSelect = (time.time() - startedSelect)
@@ -176,6 +176,6 @@ def get_route(hostname):
                     tracelist1.append("ERROR")
                     #Fill in end
                 break
-            finally:
-                print("close socket")
-                mySocket.close()
+           # finally:
+           #     print("close socket")
+           #     mySocket.close()
